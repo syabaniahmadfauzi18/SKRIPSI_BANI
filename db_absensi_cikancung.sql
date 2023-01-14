@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 03:26 PM
+-- Generation Time: Jan 14, 2023 at 02:00 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -34,6 +34,17 @@ CREATE TABLE `auth_groups_users` (
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `auth_groups_users`
+--
+
+INSERT INTO `auth_groups_users` (`id`, `user_id`, `group`, `created_at`) VALUES
+(1, 1, 'admin', '2023-01-10 15:10:47'),
+(4, 4, 'admin', '2023-01-13 18:11:10'),
+(5, 5, 'kepsek', '2023-01-13 18:12:01'),
+(6, 6, 'user', '2023-01-13 18:12:32'),
+(7, 7, 'user', '2023-01-13 18:52:52');
+
 -- --------------------------------------------------------
 
 --
@@ -55,6 +66,17 @@ CREATE TABLE `auth_identities` (
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `auth_identities`
+--
+
+INSERT INTO `auth_identities` (`id`, `user_id`, `type`, `name`, `secret`, `secret2`, `expires`, `extra`, `force_reset`, `last_used_at`, `created_at`, `updated_at`) VALUES
+(1, 1, 'email_password', NULL, 'ayomicahyo@gmail.com', '$2y$10$rWJu/sXtIc6fQ369Df4KBuWB7oZdGOsdyZlxfr3k.d8qWBjtrvFl.', NULL, NULL, 0, '2023-01-13 18:58:18', '2023-01-10 15:10:47', '2023-01-13 18:58:18'),
+(4, 4, 'email_password', NULL, 'ayomicahyoa@gmail.com', '$2y$10$ot9q4TpP8XeZBd6cNGDPt.aVntbuLemKcqfvtsbhixFZHlfxlVc72', NULL, NULL, 0, NULL, '2023-01-13 18:11:10', '2023-01-13 18:11:10'),
+(5, 5, 'email_password', NULL, 'cahyo.ayomi@agate.id', '$2y$10$3WhES.IiYnnaemXzGGwseeDVgMhGOYanOpFmr0SrhIjtGnF0a7WUG', NULL, NULL, 0, NULL, '2023-01-13 18:12:01', '2023-01-13 18:12:01'),
+(6, 6, 'email_password', NULL, 'naruto@gmail.com', '$2y$10$32m0so/v9yWyYaFY4Y9A/e6AJurzLRL1NPb9JFpQgOrzD7d9kr1mu', NULL, NULL, 0, '2023-01-13 18:46:43', '2023-01-13 18:12:32', '2023-01-13 18:46:43'),
+(7, 7, 'email_password', NULL, 'fakeaccount@gmail.com', '$2y$10$EYr2qQ2yKpcRUlFFctktAeKXN5oCQ31JNjBMDxrqui8pe5zToantK', NULL, NULL, 0, '2023-01-13 18:54:27', '2023-01-13 18:52:52', '2023-01-13 18:54:27');
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +93,25 @@ CREATE TABLE `auth_logins` (
   `date` datetime NOT NULL,
   `success` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `auth_logins`
+--
+
+INSERT INTO `auth_logins` (`id`, `ip_address`, `user_agent`, `id_type`, `identifier`, `user_id`, `date`, `success`) VALUES
+(1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-10 15:12:28', 1),
+(2, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-10 15:47:19', 1),
+(3, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-10 15:47:33', 1),
+(4, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-13 16:37:46', 1),
+(5, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-13 18:21:59', 1),
+(6, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'naruto@gmail.com', 6, '2023-01-13 18:22:37', 1),
+(7, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-13 18:34:22', 1),
+(8, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'naruto@gmail.com', 6, '2023-01-13 18:46:43', 1),
+(9, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'fakeaccount@gmail.com', NULL, '2023-01-13 18:51:35', 0),
+(10, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'fakeaccount@gmail.com', 7, '2023-01-13 18:53:16', 1),
+(11, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-13 18:53:30', 1),
+(12, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'fakeaccount@gmail.com', 7, '2023-01-13 18:54:27', 1),
+(13, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36', 'email_password', 'ayomicahyo@gmail.com', 1, '2023-01-13 18:58:18', 1);
 
 -- --------------------------------------------------------
 
@@ -191,7 +232,8 @@ INSERT INTO `tb_absensi` (`id`, `id_karyawan`, `date`, `status`) VALUES
 (21, 'adm01', '2023-01-08', 'Masuk'),
 (22, 'adm01', '2023-01-25', 'Izin'),
 (23, 'adm01', '2023-01-09', 'Masuk'),
-(24, 'adm01', '2023-01-27', 'Izin');
+(24, 'adm01', '2023-01-27', 'Izin'),
+(25, 'adm2', '2023-01-11', 'Masuk');
 
 -- --------------------------------------------------------
 
@@ -236,17 +278,19 @@ CREATE TABLE `tb_data_karyawan` (
   `name` varchar(255) NOT NULL,
   `ttl` date NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `tb_data_karyawan`
 --
 
-INSERT INTO `tb_data_karyawan` (`id`, `position`, `office`, `start_date`, `salary`, `name`, `ttl`, `phone`, `email`) VALUES
+INSERT INTO `tb_data_karyawan` (`id`, `position`, `office`, `start_date`, `salary`, `name`, `ttl`, `phone`, `username`) VALUES
 ('adm01', 'admina', 'office-a', '2023-01-01', 2000000, 'Syabani Ahmad Fauzi', '1999-02-02', '08123232323', ''),
-('adm2', 'admina', 'office-b', '2023-01-09', 1000, 'Utomo', '2023-01-09', '0825151515', ''),
-('adm3', 'admina', 'office-a', '2023-01-19', 70000000, 'ayu dewi', '2023-01-15', '089566788932', '');
+('adm2', 'admina', 'office-b', '2023-01-09', 1000, 'Utomo', '2023-01-09', '0825151515', 'ayomicahyo'),
+('adm3', 'admina', 'office-a', '2023-01-19', 70000000, 'ayu dewi', '2023-01-15', '089566788932', ''),
+('adm4', 'adminb', 'office-b', '2023-01-17', 0, 'Naruto Uzumaki', '2023-01-09', '089566788932', 'narutoUM'),
+('adm5', 'admina', 'office-a', '2023-01-24', 0, 'Fake Account', '2023-01-14', '097078097', 'faceaccounta');
 
 -- --------------------------------------------------------
 
@@ -285,6 +329,17 @@ CREATE TABLE `users` (
   `updated_at` datetime DEFAULT NULL,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `status`, `status_message`, `active`, `last_active`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'ayomicahyo', NULL, NULL, 1, '2023-01-13 18:58:29', '2023-01-10 15:10:47', '2023-01-10 15:10:47', NULL),
+(4, 'ayomicahyoa21', NULL, NULL, 1, '2023-01-13 18:11:19', '2023-01-13 18:11:10', '2023-01-13 18:11:10', NULL),
+(5, 'cahyoKepsek', NULL, NULL, 1, '2023-01-13 18:12:10', '2023-01-13 18:12:01', '2023-01-13 18:12:01', NULL),
+(6, 'narutoUM', NULL, NULL, 1, '2023-01-13 18:51:20', '2023-01-13 18:12:32', '2023-01-13 18:12:32', NULL),
+(7, 'faceaccounta', NULL, NULL, 1, '2023-01-13 18:58:11', '2023-01-13 18:52:52', '2023-01-13 18:52:52', NULL);
 
 --
 -- Indexes for dumped tables
@@ -387,19 +442,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `auth_groups_users`
 --
 ALTER TABLE `auth_groups_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `auth_identities`
 --
 ALTER TABLE `auth_identities`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `auth_logins`
 --
 ALTER TABLE `auth_logins`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `auth_permissions_users`
@@ -411,7 +466,7 @@ ALTER TABLE `auth_permissions_users`
 -- AUTO_INCREMENT for table `auth_remember_tokens`
 --
 ALTER TABLE `auth_remember_tokens`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `auth_token_logins`
@@ -435,7 +490,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `tb_absensi`
 --
 ALTER TABLE `tb_absensi`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tb_annual_leave_request`
@@ -453,7 +508,7 @@ ALTER TABLE `tb_setting`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
