@@ -67,7 +67,7 @@
                         </li>
                     </ul>
                     <div class="ml-2">
-                        <b>Your Name asdasdadssddsa</b>
+                        <b>Admin</b>
                     </div>
                 </div>
             </div>

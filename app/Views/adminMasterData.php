@@ -19,6 +19,31 @@
 </head>
 
 <body class="bg-default">
+    <?php
+    $targetID = "null";
+    $targetID = strval($current_id);
+
+    foreach ($users as $user) {
+        if ($user->id === $current_id) {
+            foreach ($data_karyawan as $karyawan) {
+                $io = $karyawan['username'];
+                echo ("<script>console.log('<?= $io ?>' + '<?= $user->username ?>')</script>");
+                if ($karyawan['username'] === $user->username) {
+                    $targetID = $karyawan['id'];
+                }
+            }
+        }
+    }
+
+    $userName = $user->username;
+
+    foreach ($data_karyawan as $karyawan) {
+        if ($karyawan['id'] === $targetID) {
+            $userName = $karyawan['name'];
+        }
+    }
+
+    ?>
     <div class="wrapper d-flex align-items-stretch">
         <nav id="sidebar" class="active">
             <div class="custom-menu">
@@ -67,7 +92,7 @@
                         </li>
                     </ul>
                     <div class="ml-2">
-                        <b>Your Name asdasdadssddsa</b>
+                        <b>Admin</b>
                     </div>
                 </div>
             </div>
@@ -99,6 +124,7 @@
                                 <th scope="col">Start date</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">Phone</th>
+                                <th scope="col">Username</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -118,9 +144,10 @@
                                     <td><?= $karyawan['start_date'] ?></td>
                                     <td><?= "Rp. " . number_format($karyawan['salary'], 2) ?></td>
                                     <td><?= $karyawan['phone'] ?></td>
+                                    <td><?= $karyawan['username'] ?></td>
                                     <td>
-                                        <button type="button" class="btn btn-success" onclick="EditEmployeeData('<?= $karyawan['id'] ?>')"><b>Edit</b></button>
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_remove_karyawan" onclick="SetTargetDeletedData('<?= $karyawan['id'] ?>')"><b>Remove</b></button>
+                                        <button type="button" class="btn btn-success btn-sm" onclick="EditEmployeeData('<?= $karyawan['id'] ?>')"><b>Edit</b></button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_remove_karyawan" onclick="SetTargetDeletedData('<?= $karyawan['id'] ?>')"><b>Remove</b></button>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

@@ -63,6 +63,8 @@ $routes->get('/kepsekMasterData', 'KepSekPages::ViewMasterData');
 $routes->get('/kepsekHistoryAbsen', 'KepSekPages::ViewHistoryData');
 $routes->get('/kepsekHistoryAbsen/(:any)', 'KepSekPages::ViewHistorydPageWithParam/$1');
 
+service('auth')->routes($routes);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -97,6 +97,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Username</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control border border-secondary" name="username" id="username">
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">TTL</label>
                                 <div class="col-sm-2 col-form-label input-group">
                                     <input type="text" class="form-control datepicker text-center border border-secondary" name="ttl" id="ttl">

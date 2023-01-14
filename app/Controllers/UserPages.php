@@ -7,7 +7,7 @@ use finfo;
 class UserPages extends BaseController
 {
     protected $dummyId = "adm01";
-    protected $useDummy = true;
+    protected $useDummy = false;
     protected $annualLeaveRequestedModel;
     protected $dataKaryawanModel;
     protected $dataAbsensiModel;
@@ -35,7 +35,7 @@ class UserPages extends BaseController
 
         if (!$this->useDummy) {
             $userId = user_id();
-            $isNormalUser = !in_groups('admin') && !in_groups('kepsek');
+            $isNormalUser = !auth()->getUser()->inGroup('admin') && !auth()->getUser()->inGroup('kepsek');
         }
 
         if ($isNormalUser) {
@@ -61,12 +61,12 @@ class UserPages extends BaseController
 
     public function ViewRequestAnnual($userId)
     {
-        $userId = $this->dummyId;
+        $Id = $this->dummyId;
         $isNormalUser = true;
 
         if (!$this->useDummy) {
-            $userId = user_id();
-            $isNormalUser = !in_groups('admin') && !in_groups('kepsek');
+            $id = user_id();
+            $isNormalUser = !auth()->getUser()->inGroup('admin') && !auth()->getUser()->inGroup('kepsek');
         }
 
         if ($isNormalUser) {
@@ -81,7 +81,7 @@ class UserPages extends BaseController
                 'requested' => $tb_annual,
                 'absensi' => $tb_absensi,
                 'users' => $tb_user,
-                'current_id' => $userId
+                'current_id' => $Id
             ];
 
             return view('RequestAnnualLeave', $data);
@@ -97,7 +97,7 @@ class UserPages extends BaseController
 
         if (!$this->useDummy) {
             $userId = user_id();
-            $isNormalUser = !in_groups('admin') && !in_groups('kepsek');
+            $isNormalUser = !auth()->getUser()->inGroup('admin') && !auth()->getUser()->inGroup('kepsek');
         }
 
         if ($isNormalUser) {
@@ -127,7 +127,7 @@ class UserPages extends BaseController
 
         if (!$this->useDummy) {
             $userId = user_id();
-            $isNormalUser = !in_groups('admin') && !in_groups('kepsek');
+            $isNormalUser = !auth()->getUser()->inGroup('admin') && !auth()->getUser()->inGroup('kepsek');
         }
 
         if ($isNormalUser) {
@@ -157,7 +157,7 @@ class UserPages extends BaseController
 
         if (!$this->useDummy) {
             $userId = user_id();
-            $isNormalUser = !in_groups('admin') && !in_groups('kepsek');
+            $isNormalUser = !auth()->getUser()->inGroup('admin') && !auth()->getUser()->inGroup('kepsek');
         }
 
         if ($isNormalUser) {

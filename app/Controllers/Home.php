@@ -9,6 +9,9 @@ class Home extends BaseController
     protected $dataAbsensiModel;
     protected $settingModel;
     protected $inGroupCheck = false;
+    protected $userController;
+    protected $kepsekController;
+    protected $adminController;
 
     public function __construct()
     {
@@ -16,6 +19,9 @@ class Home extends BaseController
         $this->dataKaryawanModel = new \App\Models\DataKaryawanModel();
         $this->dataAbsensiModel = new \App\Models\DataAbsensiModel();
         $this->settingModel = new \App\Models\SettingModel();
+        $this->userController = new UserPages();
+        $this->kepsekController = new KepSekPages();
+        $this->adminController = new AdminPages();
     }
 
     public function index()
@@ -31,12 +37,12 @@ class Home extends BaseController
             'absensi' => $tb_absensi
         ];
 
-        if (in_groups('admin')) {
-            return view('adminDashboard', $data);
-        } else if (in_groups('kepsek')) {
-            return view('kepSekDashboard', $data);
+        if (auth()->getUser()->inGroup('admin')) {
+            return $this->adminController->ViewAdminPage();
+        } else if (auth()->getUser()->inGroup('kepsek')) {
+            return $this->kepsekController->ViewDashboard();
         } else {
-            return view('Home', $data);
+            return $this->userController->ViewHomePageUser();
         }
     }
 }

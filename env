@@ -108,7 +108,7 @@
 #--------------------------------------------------------------------
 
 # honeypot.hidden = 'true'
-# honeypot.label = 'Fill This Field'
+# honeypot.label = 'Fill This '
 # honeypot.name = 'honeypot'
 # honeypot.template = '<label>{label}</label><input type="text" name="{name}" value=""/>'
 # honeypot.container = '<div style="display:none">{template}</div>'

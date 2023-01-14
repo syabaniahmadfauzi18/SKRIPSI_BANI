@@ -17,6 +17,31 @@
 </head>
 
 <body>
+    <?php
+    $targetID = "null";
+    $targetID = strval($current_id);
+
+    foreach ($users as $user) {
+        if ($user->id === $current_id) {
+            foreach ($data_karyawan as $karyawan) {
+                $io = $karyawan['username'];
+                echo ("<script>console.log('<?= $io ?>' + '<?= $user->username ?>')</script>");
+                if ($karyawan['username'] === $user->username) {
+                    $targetID = $karyawan['id'];
+                }
+            }
+        }
+    }
+
+    $userName = "null";
+
+    foreach ($data_karyawan as $karyawan) {
+        if ($karyawan['id'] === $targetID) {
+            $userName = $karyawan['name'];
+        }
+    }
+
+    ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="http://localhost:8080/home">
             <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
@@ -34,11 +59,12 @@
                             <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-item"><b><?= $user->username ?></b></div>
                             <a class="dropdown-item" href="/logout">Log Out</a>
                         </div>
                     </li>
                 </ul>
-                <b>Your Name asdasdadssddsa</b>
+                <b><?= $userName ?></b>
             </div>
         </div>
     </nav>

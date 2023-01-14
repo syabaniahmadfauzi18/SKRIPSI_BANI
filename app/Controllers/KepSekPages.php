@@ -6,7 +6,7 @@ use finfo;
 
 class KepSekPages extends BaseController
 {
-    protected $groupChecking = false;
+    protected $groupChecking = true;
     protected $dummyId = "KS01";
     protected $annualLeaveRequestedModel;
     protected $dataKaryawanModel;
@@ -29,7 +29,7 @@ class KepSekPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('kepsek');
+            $inGroup = auth()->getUser()->inGroup('kepsek');
             $userId = user_id();
         }
 
@@ -60,7 +60,7 @@ class KepSekPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('kepsek');
+            $inGroup = auth()->getUser()->inGroup('kepsek');
             $userId = user_id();
         }
 
@@ -91,7 +91,7 @@ class KepSekPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('kepsek');
+            $inGroup = auth()->getUser()->inGroup('kepsek');
             $userId = user_id();
         }
 
@@ -120,7 +120,7 @@ class KepSekPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('kepsek');
+            $inGroup = auth()->getUser()->inGroup('kepsek');
             $userId = user_id();
         }
 

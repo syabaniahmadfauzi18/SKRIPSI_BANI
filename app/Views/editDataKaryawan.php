@@ -91,6 +91,7 @@
                 $startDate = "null";
                 $ttl = "null";
                 $phone = "null";
+                $username = "null";
 
                 foreach ($data_karyawan as $karyawan) : ?>
                     <?php
@@ -101,6 +102,7 @@
                         $office = $karyawan['office'];
                         $ttl = $karyawan['ttl'];
                         $phone = $karyawan['phone'];
+                        $username = $karyawan['username'];
                         $salary = $karyawan['salary'];
                     }
                     ?>
@@ -112,7 +114,7 @@
                     <b>
                         <form class="mt-3" action="<?= base_url() ?>/updateKaryawan" method="post">
                             <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Name</label>
+                                <label class="col-sm-2 col-form-label">Id Karyawan</label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control border border-secondary" readonly name="id" id="id" value='<?= $targetid ?>'>
                                 </div>
@@ -121,6 +123,12 @@
                                 <label class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control border border-secondary" name="name" id="name" value='<?= $name ?>'>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Username</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control border border-secondary" name="username" id="username" value='<?= $username ?>'>
                                 </div>
                             </div>
                             <div class="form-group row">

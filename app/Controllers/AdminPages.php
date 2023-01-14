@@ -6,7 +6,7 @@ use CodeIgniter\CLI\Console;
 
 class AdminPages extends BaseController
 {
-    protected $groupChecking = false;
+    protected $groupChecking = true;
     protected $dummyId = "admin01";
     protected $annualLeaveRequestedModel;
     protected $dataKaryawanModel;
@@ -29,7 +29,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -60,7 +60,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -93,7 +93,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -124,7 +124,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -153,7 +153,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -182,7 +182,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -211,7 +211,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -239,7 +239,7 @@ class AdminPages extends BaseController
         $userId = $this->dummyId;
 
         if ($this->groupChecking) {
-            $inGroup = in_groups('admin');
+            $inGroup = auth()->getUser()->inGroup('admin');
             $userId = user_id();
         }
 
@@ -324,7 +324,8 @@ class AdminPages extends BaseController
             'office' => $this->request->getPost('office'),
             'start_date' => $this->request->getPost('startdate'),
             'salary' => $this->request->getPost('salary'),
-            'ttl' => $this->request->getPost('ttl')
+            'ttl' => $this->request->getPost('ttl'),
+            'username' => $this->request->getPost('username')
         ]);
 
         return redirect()->to("/adminMasterData");
@@ -340,7 +341,8 @@ class AdminPages extends BaseController
             'office' => $this->request->getPost('office'),
             'start_date' => $this->request->getPost('startdate'),
             'salary' => $this->request->getPost('salary'),
-            'ttl' => $this->request->getPost('ttl')
+            'ttl' => $this->request->getPost('ttl'),
+            'username' => $this->request->getPost('username')
         ]);
 
         return redirect()->to("/adminMasterData");

@@ -17,22 +17,20 @@
 
 <body>
     <?php
-
-
     $targetID = "null";
     $targetID = strval($current_id);
 
-    /*foreach ($users as $user) {
-        $io = $user['id'];
-        echo ("<script>console.log('<?= $io ?>' + '<?= $current_id ?>')</script>");
-        if ($user['id'] === $current_id) {
+    foreach ($users as $user) {
+        if ($user->id === $current_id) {
             foreach ($data_karyawan as $karyawan) {
-                if ($karyawan['email'] === [$user['email']]) {
+                $io = $karyawan['username'];
+                echo ("<script>console.log('<?= $io ?>' + '<?= $user->username ?>')</script>");
+                if ($karyawan['username'] === $user->username) {
                     $targetID = $karyawan['id'];
                 }
             }
         }
-    }*/
+    }
 
     $userName = "null";
 
@@ -60,6 +58,7 @@
                             <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <div class="dropdown-item"><b><?= $user->username ?></b></div>
                             <a class="dropdown-item" href="/logout">Log Out</a>
                         </div>
                     </li>
@@ -84,9 +83,9 @@
         </div>
     </div>
     <p align="center">
-        <a href="http://localhost:8080/checkin"><button type="button" class="btn btn-primary btn-lg" id="checkin-btn"">Check-In</button></a><br><br>
-        <button type=" button" class="btn btn-success btn-lg" onclick="window.open('/reqAnnualLeave/'+'<?= $targetID ?>', '_self')">Request Annual Leave</button>
-            <button type=" button" class="btn btn-warning btn-lg" onclick="window.print()">Download Riwayat Absensi</button>
+        <button type="button" class="btn btn-primary btn-lg" id="checkin-btn" onclick="CheckIn('<?= $userName ?>')">Check-In</button></a><br><br>
+        <button type=" button" class="btn btn-success btn-lg" onclick="ReqAnnualLeave('<?= $userName ?>')">Request Annual Leave</button>
+        <button type=" button" class="btn btn-warning btn-lg" onclick="window.print()">Download Riwayat Absensi</button>
     </p>
     <?php
     $totalKaryawan = count($data_karyawan);
@@ -324,16 +323,30 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     <script>
-        function AutoLogout() {
+        function CheckIn(username) {
+            if (username == "null") {
+                SetData();
+            } else {
+                window.open("checkin", "_self");
+            }
+        }
+
+        function ReqAnnualLeave(username) {
+            if (username == "null") {
+                SetData();
+            } else {
+                window.open('/reqAnnualLeave/' + '<?= $targetID ?>', '_self');
+            }
+        }
+
+        function SetData() {
             swal({
                 title: "Warning!",
-                text: "Data anda belum di setting oleh admin \n silahkan meminta admin membuat data anda terlebih dahulu",
+                text: "Data anda belum di setting oleh admin beritahukan username anda agak dapat melakukan absen",
                 icon: "warning",
-                button: "Back",
+                button: "Ok",
                 dangerMode: true,
             });
-
-            window.open('/logout', '_self');
         }
 
         const ctx = document.getElementById('myChart1');
@@ -438,9 +451,9 @@
             echo ("<script>CheckInChecker('" . $absen['date'] . "')</script>");
         }
 
-        /*if ($targetID === "null") {
-            echo ("<script>AutoLogout()</script>");
-        }*/
+        if ($userName === "null") {
+            echo ("<script>SetData()</script>");
+        }
     }
     ?>
 </body>

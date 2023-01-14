@@ -29,7 +29,7 @@
             </div>
             <div class="p-4">
                 <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
-                - Admin Area
+                - Kepsek Area
                 <p>
                 <ul class="list-unstyled components mb-5">
                     <li>
@@ -61,7 +61,7 @@
                         </li>
                     </ul>
                     <div class="ml-2">
-                        <b>Your Name asdasdadssddsa</b>
+                        <b>Kepala Sekolah</b>
                     </div>
                 </div>
             </div>

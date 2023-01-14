@@ -3,12 +3,8 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use CodeIgniter\Shield\Models\UserModel as ShieldUserModel;
 
-class UserModel extends Model
+class UserModel extends ShieldUserModel
 {
-    protected $table = 'users';
-    protected $allowedFields  = [
-        'id', 'email', 'username', 'password_hash', 'reset_hash', 'reset_at', 'reset_expires', 'activate_hash',
-        'status', 'status_message', 'active', 'force_pass_reset', 'permissions', 'deleted_at',
-    ];
 }
